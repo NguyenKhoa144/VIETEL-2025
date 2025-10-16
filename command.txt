@@ -1,0 +1,25 @@
+# kích hoạt môi trường ảo
+source venv/bin/activate 
+
+
+# đống băng requirement 
+pip freeze > requirements.txt
+
+
+# thoát khỏi môi trường ảo :
+deactivate
+
+
+# hiển thị cây thư mục :
+tree -I "venv|__pycache__|.git|.idea|.vscode|*.pyc|*.log|*.env|*.DS_Store|__init__.py"
+
+
+# các câu lệnh git :
+git add .
+git commit -m"noi_dung lan thay doi nay"
+git push 
+
+
+#mỗi lần chạy 
+cd viettel-2025
+ls  # Kiểm tra: Thấy app.py, src/, data/, Public_train.csv
