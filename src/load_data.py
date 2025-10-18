@@ -1,13 +1,16 @@
 import cv2
 import numpy as np
 from pathlib import Path
-import open3d as o3d
 
 def load_and_undistort(image_name: str, data_dir: Path):
     """Load RGB, depth, PLY; undistort & align."""
+    import open3d as o3d  # Lazy import để tránh treo
+
     rgb_path = data_dir / "rgb" / image_name
     depth_path = data_dir / "depth" / image_name
-    ply_path = data_dir / "ply" / f"{image_name.replace('.png', '.ply')}"
+    # Sửa: Relative path ./data/ply, tên file 0000.ply từ image_0000.png
+    ply_filename = image_name.replace('image_', '').replace('.png', '.ply')
+    ply_path = data_dir / "ply" / ply_filename
 
     # Load
     rgb = cv2.cvtColor(cv2.imread(str(rgb_path)), cv2.COLOR_BGR2RGB)
